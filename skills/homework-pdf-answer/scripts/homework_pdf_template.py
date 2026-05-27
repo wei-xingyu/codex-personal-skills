@@ -1,4 +1,5 @@
 from pathlib import Path
+import textwrap
 
 import fitz
 from reportlab.lib import colors
@@ -62,6 +63,42 @@ class HomeworkPdf:
                 aa = a + 3.14159 * delta
                 c.line(x2, y2, x2 + length * math.cos(aa), y2 + length * math.sin(aa))
 
+    def triangle(self, x, y, size=10, direction="up"):
+        c = self.c
+        c.setFillColor(colors.white)
+        c.setStrokeColor(colors.HexColor("#111827"))
+        p = c.beginPath()
+        if direction == "up":
+            p.moveTo(x, y + size)
+            p.lineTo(x - size, y - size)
+            p.lineTo(x + size, y - size)
+        elif direction == "down":
+            p.moveTo(x, y - size)
+            p.lineTo(x - size, y + size)
+            p.lineTo(x + size, y + size)
+        elif direction == "left":
+            p.moveTo(x - size, y)
+            p.lineTo(x + size, y + size)
+            p.lineTo(x + size, y - size)
+        else:
+            p.moveTo(x + size, y)
+            p.lineTo(x - size, y + size)
+            p.lineTo(x - size, y - size)
+        p.close()
+        c.drawPath(p, fill=1, stroke=1)
+
+    def diamond(self, x, y, size=8, filled=True):
+        c = self.c
+        c.setFillColor(colors.HexColor("#111827") if filled else colors.white)
+        c.setStrokeColor(colors.HexColor("#111827"))
+        p = c.beginPath()
+        p.moveTo(x, y + size)
+        p.lineTo(x + size, y)
+        p.lineTo(x, y - size)
+        p.lineTo(x - size, y)
+        p.close()
+        c.drawPath(p, fill=1, stroke=1)
+
     def box(self, x, y, w, h, title, rows=None, fill="#ffffff"):
         c = self.c
         c.setFillColor(colors.HexColor(fill))
@@ -73,6 +110,18 @@ class HomeworkPdf:
         for row in rows or []:
             self.text(x + 8, yy, row, 9)
             yy -= 15
+
+    def lifeline(self, x, top, bottom, name, fill="#f8fafc"):
+        self.box(x - 55, top - 36, 110, 36, name, fill=fill)
+        self.line(x, top - 36, x, bottom, dash=True)
+
+    def wrap_text(self, x, y, s, size=12, width_chars=48, leading=16):
+        lines = textwrap.wrap(s, width=width_chars, break_long_words=False, replace_whitespace=False)
+        yy = y
+        for line in lines:
+            self.text(x, yy, line, size)
+            yy -= leading
+        return yy
 
     def code_block(self, x, y, lines, size=10, leading=13, width=730):
         c = self.c
@@ -88,6 +137,10 @@ class HomeworkPdf:
 
     def show_page(self):
         self.c.showPage()
+
+    def new_page(self):
+        self.show_page()
+        self.header()
 
     def save(self):
         self.c.save()

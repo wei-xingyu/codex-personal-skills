@@ -16,6 +16,13 @@
 - Use large labels, simple boxes, clear arrows, and enough whitespace.
 - Put one complex diagram per page if needed.
 - For UML/design-pattern diagrams, include only the important classes and methods; do not overfill boxes.
+- For class diagrams, prefer standard notation:
+  - hollow triangle for inheritance/realization,
+  - filled diamond for composition,
+  - open diamond for aggregation,
+  - dashed arrow for dependency.
+- For sequence diagrams, keep messages horizontally aligned and do not place labels on top of participant boxes.
+- For design-pattern answers, draw roles first and keep concrete class count small enough to copy by hand.
 
 ## PDF Layout Rules
 
@@ -26,6 +33,9 @@
 - Split code across pages instead of shrinking it too much.
 - Use a Chinese font for all text and code when code contains Chinese strings.
 - Render previews after generation and inspect them visually.
+- Use one page per major question when the page would otherwise feel crowded.
+- Put "代码见下一页" on a diagram page when code is long.
+- Give preview PNG links in the final answer when the user wants to quickly check the result.
 
 ## Code Formatting Rules
 
@@ -37,6 +47,15 @@
   - use `System.out.println(...)`,
   - include a minimal `Client` or `main` only when it helps show usage.
 - For design patterns, keep code minimal but structurally correct.
+- If the user does not specify a language and the surrounding context is Java backend, use Java.
+- If the first generated code page is too dense, split it into upper/lower pages.
+
+## Copy-Ready Answer Patterns
+
+- Pattern name: `答案：装饰模式。通过装饰类在不修改原手机类的情况下增加振动、灯光等功能。`
+- Concept class list: `答案：Customer、Product、POS、Cashier。`
+- UML relation: `答案：A 由 1 个 B 和 1 个或多个 C 构成，属于组合关系。`
+- Sequence diagram explanation: `含义：caller 调用 E1.do(x)；若 x < 10 调用 E2，否则调用 E3。`
 
 ## What To Avoid
 
@@ -45,4 +64,3 @@
 - Do not leave broken image links in Markdown.
 - Do not deliver a PDF without rendering a preview when layout matters.
 - Do not leave Chinese as black squares; register a Chinese font.
-

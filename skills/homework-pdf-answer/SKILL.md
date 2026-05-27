@@ -15,6 +15,16 @@ Turn assignment photos or pasted homework questions into a polished deliverable:
 - Markdown source,
 - PDF output rendered and visually checked before delivery.
 
+## Typical Requests
+
+Use this skill for requests like:
+
+- "把这些作业题整理成短答案和 PDF，图要清楚"
+- "和上次一样，题号标清楚，答案少写点"
+- "软件建模与实践作业，类图/顺序图要精致"
+- "设计模式应用题，给我 Java 代码和类图"
+- "不要 Mermaid，直接做成能看的 PDF"
+
 ## Required Style
 
 Read `references/style-guide.md` when the task includes diagrams, PDF layout, or resume-quality formatting. The default user preference is: answer text should be short, direct, and easy to copy; diagrams should be clean enough to redraw by hand or view in a PDF.
@@ -33,6 +43,15 @@ Read `references/style-guide.md` when the task includes diagrams, PDF layout, or
 7. Render the PDF to PNG with PyMuPDF or Poppler and visually inspect at least the pages most likely to have layout issues. Fix overlap, clipped text, unreadable Chinese, tiny code, or arrows crossing labels.
 8. Final response should give direct links to the PDF, Markdown, and preview PNGs if useful.
 
+## Diagram Decision Table
+
+- UML class diagram: use boxes with class names, attributes/methods, inheritance triangles, dependency arrows, aggregation/composition diamonds.
+- Sequence diagram: use participant boxes, dashed lifelines, horizontal message arrows, dashed return arrows, and guard labels such as `[x < 10]`.
+- Collaboration/communication diagram: use object boxes and numbered arrows, for example `1: do(x)`.
+- Flow/process diagram: use left-to-right or top-to-bottom boxes with numbered arrows.
+- Design pattern diagram: include only roles needed by the pattern, then put concise code on a separate page if it would crowd the diagram.
+- Code-heavy answer: split code across pages instead of shrinking below readable size.
+
 ## Implementation Notes
 
 - Prefer `reportlab` for PDF creation and `pymupdf`/`fitz` for rendering previews.
@@ -40,6 +59,7 @@ Read `references/style-guide.md` when the task includes diagrams, PDF layout, or
 - If Python packages are missing, install normal packages with `python -m pip install reportlab pymupdf pillow`; do not present them as lesser tools.
 - Keep outputs in the workspace, not only under temp locations.
 - Use `apply_patch` for creating or editing reusable scripts and Markdown.
+- If a repository named `codex-personal-skills` exists in the workspace, run its `scripts/sync-skills.ps1` after improving this skill so the public copy stays current.
 
 ## Reusable Script
 
@@ -47,7 +67,7 @@ Use `scripts/homework_pdf_template.py` as a starting point for generating PDFs w
 
 - registered Chinese font,
 - landscape A4 layout,
-- reusable `box`, `line`, `arrow`, `code_block`, and rendering helpers,
+- reusable `box`, `line`, `diamond`, `triangle`, `lifeline`, `code_block`, `wrap_text`, and rendering helpers,
 - output and preview directory conventions.
 
 Copy or adapt it into the workspace for each assignment instead of modifying the skill script directly.
@@ -62,4 +82,3 @@ Before final delivery, verify:
 - code is language-appropriate and normally formatted,
 - PDF opens and renders to preview PNGs,
 - any unfinished or inferred content is not presented as completed fact.
-
