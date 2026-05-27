@@ -1,0 +1,4 @@
+interface:
+  display_name: "Homework PDF Answer"
+  short_description: "Homework answers with diagrams and PDFs."
+  default_prompt: "Turn homework photos into concise answers, clean diagrams, Markdown, and a visually checked PDF."

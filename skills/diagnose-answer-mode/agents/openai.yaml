@@ -1,0 +1,7 @@
+interface:
+  display_name: "诊断回答模式"
+  short_description: "按原因、定位、严重性、修改方案回答问题"
+  default_prompt: "Use $diagnose-answer-mode to explain the issue clearly: cause, exact location, severity, whether to change it, and how to change it."
+
+policy:
+  allow_implicit_invocation: true
