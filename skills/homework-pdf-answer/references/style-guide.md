@@ -7,11 +7,14 @@
 - For homework copying, prefer 1-3 lines per subquestion unless code or diagrams are required.
 - Do not add long explanations, learning notes, or unnecessary background.
 - If the user wants code, use the language they specify. If unspecified for Java backend/design-pattern homework, prefer Java.
+- For non-CS homework, answer the exact question directly and do not force software-engineering terminology.
+- If the question is text-only, still produce a polished PDF with headings, spacing, and clean typography.
 
 ## Diagram Rules
 
 - Use deterministic diagrams, not AI-generated raster diagrams, when labels matter.
 - Prefer SVG files or ReportLab vector drawing for UML, sequence diagrams, collaboration diagrams, flow diagrams, design-pattern diagrams, and architecture diagrams.
+- For non-software subjects, use deterministic vector diagrams for timelines, process flows, comparison charts, simple geometry sketches, labeled structures, and cause-effect diagrams.
 - Avoid Mermaid unless the user specifically says they can render Mermaid. Many Markdown viewers do not show it.
 - Use large labels, simple boxes, clear arrows, and enough whitespace.
 - Put one complex diagram per page if needed.
@@ -27,9 +30,11 @@
 ## PDF Layout Rules
 
 - Use landscape A4 for diagram-heavy homework.
+- Use portrait or landscape based on readability; portrait is acceptable for text-only answers.
 - Put a pale header band on each page with the title.
 - Use large section titles: `第 4 题：...`
 - Keep diagram and answer text close together.
+- For text-only pages, use compact cards or sections with clear question numbers, not oversized blank space.
 - Split code across pages instead of shrinking it too much.
 - Use a Chinese font for all text and code when code contains Chinese strings.
 - Render previews after generation and inspect them visually.
@@ -56,6 +61,9 @@
 - Concept class list: `答案：Customer、Product、POS、Cashier。`
 - UML relation: `答案：A 由 1 个 B 和 1 个或多个 C 构成，属于组合关系。`
 - Sequence diagram explanation: `含义：caller 调用 E1.do(x)；若 x < 10 调用 E2，否则调用 E3。`
+- Text-only short answer: `答案：...`
+- Calculation answer: `解：... 因此答案为 ...`
+- Compare/contrast answer: use a 2-4 row table if that is shorter than prose.
 
 ## What To Avoid
 

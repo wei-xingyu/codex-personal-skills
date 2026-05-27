@@ -2,9 +2,7 @@ param(
     [string]$CodexSkillsRoot = "$env:USERPROFILE\.codex\skills",
     [string[]]$SkillNames = @(
         "diagnose-answer-mode",
-        "hatch-pet",
-        "homework-pdf-answer",
-        "pdf"
+        "homework-pdf-answer"
     )
 )
 
@@ -42,4 +40,3 @@ foreach ($skillName in $SkillNames) {
 }
 
 Write-Host "Done. Review changes, then commit and push."
-

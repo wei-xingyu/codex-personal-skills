@@ -1,6 +1,6 @@
 # Codex Personal Skills
 
-这是我的 Codex 个人技能库，用来保存和分享自己制作、整理或二次维护的 Codex skills。
+这是我的 Codex 个人技能库，用来保存和分享自己制作的 Codex skills。
 
 仓库目标：
 
@@ -12,13 +12,13 @@
 
 ### homework-pdf-answer
 
-把拍照的作业题整理成短答案、清晰图示、Markdown 和经过渲染检查的 PDF。
+把拍照或粘贴的任意作业题整理成短答案、清晰图示、Markdown 和经过渲染检查的 PDF。
 
 适合场景：
 
-- 计算机专业作业题整理
-- 软件建模与实践、UML、顺序图、类图
-- 设计模式应用题
+- 任意课程作业题整理
+- 文字题答案排版成漂亮 PDF
+- 涉及图示、流程图、类图、顺序图、结构图、对比表等可视化答案
 - 需要题号清楚、答案简短、图片精细、PDF 方便查看的作业
 
 ### diagnose-answer-mode
@@ -74,13 +74,10 @@ Copy-Item -Recurse .\skills\homework-pdf-answer "$env:USERPROFILE\.codex\skills\
 默认同步这些个人 skills：
 
 - `diagnose-answer-mode`
-- `hatch-pet`
 - `homework-pdf-answer`
-- `pdf`
 
 不会同步 `.system`、插件缓存、运行时目录等系统内容。
 
 ## License
 
 MIT License. You may fork, modify, and reuse these skills.
-
